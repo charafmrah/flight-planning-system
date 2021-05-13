@@ -1,42 +1,87 @@
 package com.example.aviationsystem;
 
-public class LinkedList<edge> {
-    private Node root;
-    private int size;
+public class LinkedList {
+
+    Node head;
+    int size;
 
     public LinkedList() {
-        root = null;
+        head = null;
         size = 0;
-
     }
 
-    public void addEdge(Edge edge) {
-        Node node = new Node(edge);
-        if (root == null)
-            root = node;
-        else {
-            Node currentNode = root;
-            while (currentNode.next != null)
-                currentNode = currentNode.next;
+    public boolean isEmpty() {
+        return (head == null);
+    }
 
-            currentNode.next = node;
+    public void addStudent(int student) {
+        Node newNode = new Node(student);
+        Node currentNode = head;
+
+        if(isEmpty())
+            head = newNode;
+        else {
+            while(currentNode.next != null) {
+                currentNode = currentNode.next;
+            }
+            currentNode.next = newNode;
         }
     }
 
-    public Node getRoot() {
-        return root;
+    public void printData() {
+        Node currentNode = head;
+
+        while(currentNode != null) {
+            System.out.println(currentNode.getStudent());
+            currentNode = currentNode.next;
+        }
     }
 
-    public void setRoot(Node root) {
-        this.root = root;
+    public Node addStudentToGivenPosition(Node head, int position, int data) {
+        if(position <= 0)
+            System.out.println("invalid position");
+        else {
+            Node newNode = new Node (data);
+            Node previous = head;
+
+            int count = 1;
+            while(count < position - 1) {
+                previous = previous.next;
+                count++;
+            }
+            if(previous == null) {
+                previous = newNode;
+            }
+            else {
+                Node current = previous.next;
+                newNode.next = current;
+                previous.next = newNode;
+            }
+        }
+        return head;
     }
 
-    public int getSize() {
-        return size;
+    public void deleteStudent(int student) {
+        Node temp = head, prev = null;
+
+        // The node that we want to delete is the root
+        if (temp != null && temp.getStudent() == student) {
+            head = temp.next;
+            return;
+        }
+        while (temp != null && temp.getStudent() != student) {
+            prev = temp;
+            temp = temp.next;
+        }
+        if (temp == null)
+            return;
+
+        prev.next = temp.next;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void addToFront(Node student) {
+        student.next = head;
+        head = student;
     }
 
 }
