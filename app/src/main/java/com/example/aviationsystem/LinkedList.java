@@ -2,86 +2,86 @@ package com.example.aviationsystem;
 
 public class LinkedList {
 
-    Node head;
+    Node root;
     int size;
 
     public LinkedList() {
-        head = null;
+        root = null;
         size = 0;
     }
 
     public boolean isEmpty() {
-        return (head == null);
+        return (root == null);
     }
 
-    public void addStudent(int student) {
-        Node newNode = new Node(student);
-        Node currentNode = head;
+    public void addCity(City city) {
+        Node newNode = new Node(city);
+        Node currentNode = root;
 
         if(isEmpty())
-            head = newNode;
+            root = newNode;
         else {
-            while(currentNode.next != null) {
-                currentNode = currentNode.next;
+            while(currentNode.getNext() != null) {
+                currentNode = currentNode.getNext();
             }
-            currentNode.next = newNode;
+            currentNode.setNext(newNode);
         }
     }
 
     public void printData() {
-        Node currentNode = head;
+        Node currentNode = root;
 
         while(currentNode != null) {
-            System.out.println(currentNode.getStudent());
-            currentNode = currentNode.next;
+            System.out.println(currentNode.getCity());
+            currentNode = currentNode.getNext();
         }
     }
 
-    public Node addStudentToGivenPosition(Node head, int position, int data) {
+    public Node addStudentToGivenPosition(Node root, int position, City city) {
         if(position <= 0)
             System.out.println("invalid position");
         else {
-            Node newNode = new Node (data);
-            Node previous = head;
+            Node newNode = new Node (city);
+            Node previous = root;
 
             int count = 1;
             while(count < position - 1) {
-                previous = previous.next;
+                previous = previous.getNext();
                 count++;
             }
             if(previous == null) {
                 previous = newNode;
             }
             else {
-                Node current = previous.next;
-                newNode.next = current;
-                previous.next = newNode;
+                Node current = previous.getNext();
+                newNode.setNext(current);
+                previous.setNext(newNode);
             }
         }
-        return head;
+        return root;
     }
 
-    public void deleteStudent(int student) {
-        Node temp = head, prev = null;
+    public void deleteCity(City city) {
+        Node temp = root, prev = null;
 
         // The node that we want to delete is the root
-        if (temp != null && temp.getStudent() == student) {
-            head = temp.next;
+        if (temp != null && temp.getCity() == city) {
+            root = temp.getNext();
             return;
         }
-        while (temp != null && temp.getStudent() != student) {
+        while (temp != null && temp.getCity() != city) {
             prev = temp;
-            temp = temp.next;
+            temp = temp.getNext();
         }
         if (temp == null)
             return;
 
-        prev.next = temp.next;
+        prev.setNext(temp.getNext());
     }
 
-    public void addToFront(Node student) {
-        student.next = head;
-        head = student;
+    public void addToFront(Node city) {
+        city.setNext(root);
+        root = city;
     }
 
 }
