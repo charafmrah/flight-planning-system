@@ -1,6 +1,6 @@
 package com.example.aviationsystem;
 
-public class LinkedList {
+public class LinkedList<T> {
 
     Node root;
     int size;
@@ -37,7 +37,7 @@ public class LinkedList {
         }
     }
 
-    public Node addStudentToGivenPosition(Node root, int position, City city) {
+    public Node addCityToGivenPosition(Node root, int position, City city) {
         if(position <= 0)
             System.out.println("invalid position");
         else {
@@ -64,7 +64,6 @@ public class LinkedList {
     public void deleteCity(City city) {
         Node temp = root, prev = null;
 
-        // The node that we want to delete is the root
         if (temp != null && temp.getCity() == city) {
             root = temp.getNext();
             return;
