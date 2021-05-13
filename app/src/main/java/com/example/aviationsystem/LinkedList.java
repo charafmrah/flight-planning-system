@@ -2,8 +2,8 @@ package com.example.aviationsystem;
 
 public class LinkedList<T> {
 
-    Node root;
-    int size;
+    private Node root;
+    private int size;
 
     public LinkedList() {
         root = null;
@@ -26,6 +26,7 @@ public class LinkedList<T> {
             }
             currentNode.setNext(newNode);
         }
+        size++;
     }
 
     public void printData() {
@@ -76,11 +77,28 @@ public class LinkedList<T> {
             return;
 
         prev.setNext(temp.getNext());
+        size--;
     }
 
     public void addToFront(Node city) {
         city.setNext(root);
         root = city;
+    }
+
+    public Node getRoot() {
+        return root;
+    }
+
+    public void setHead(Node root) {
+        this.root = root;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
 }
