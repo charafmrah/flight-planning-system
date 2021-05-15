@@ -1,7 +1,6 @@
 package com.example.aviationsystem;
 
 public class Node {
-
     private City city;
     private Node next;
 
@@ -35,6 +34,5 @@ public class Node {
     public void setNext(Node next) {
         this.next = next;
     }
-    
 }
 

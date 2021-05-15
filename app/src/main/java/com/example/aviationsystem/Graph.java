@@ -2,7 +2,8 @@ package com.example.aviationsystem;
 
 import java.util.*;
 
-class Graph {
+public class Graph {
+
 
     // edges in graph stored in a hashmap
     private Map<City, LinkedList> map = new HashMap<>();
@@ -44,6 +45,16 @@ class Graph {
         return count;
     }
 
+    public String hasEdge(City src, City dst)
+    {
+        if (map.get(src).contains(dst)) {
+            return "Edge found!";
+        }
+        else {
+            return "Edge was NOT found!";
+        }
+    }
+
 
     public String hasVertex(City city)
     {
@@ -54,22 +65,22 @@ class Graph {
             return "vertix was NOT found!";
         }
     }
-    
+
 
     // Print the adjacency list for all vertices
     @Override
-    public String toString()
-    {
+    public String toString() {
         StringBuilder builder = new StringBuilder();
 
-        for (City city1 : map.keySet()) {
-            builder.append(city1.toString() + ": ");
-            for (City city2 : map.get(city1)) {
-                builder.append(city2.toString() + " ");
+
+        for(City vertex : map.keySet()) {
+            builder.append(vertex.toString() + ": ");
+            for(City node: map.get(vertex)) {
+                builder.append(node.toString() + " ");
             }
             builder.append("\n");
         }
-
-        return (builder.toString());
+        return builder.toString();
     }
+
 }

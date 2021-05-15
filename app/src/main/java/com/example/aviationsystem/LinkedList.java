@@ -101,4 +101,21 @@ public class LinkedList<T> {
         this.size = size;
     }
 
+    // Checks if a city is in the linked list
+    public boolean contains(City city) {
+        Node current = root;
+
+        while (current != null)
+        {
+            if (current.getCity().equals(city))
+            {
+                return true;
+            }
+
+            current = current.getNext();
+        }
+
+        return false;
+    }
+
 }
