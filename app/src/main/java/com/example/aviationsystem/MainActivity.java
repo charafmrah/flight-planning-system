@@ -3,8 +3,16 @@ package com.example.aviationsystem;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private Spinner fromSpinner,toSpinner;
 
     public static void main(String[] args) {
         // Object of graph is created.
@@ -50,5 +58,56 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fromSpinner = findViewById(R.id.fromSpinner);
+        toSpinner = findViewById(R.id.toSpinner);
+        ArrayList<String> cities = new ArrayList<>();
+        cities.add("New York");
+        cities.add("Dublin");
+        cities.add("Berlin");
+        cities.add("London");
+        cities.add("Paris");
+        cities.add("Los Angeles");
+        cities.add("Moscow");
+        cities.add("Rome");
+        cities.add("Monaco");
+        cities.add("Lille");
+        cities.add("Izmir");
+        cities.add("Ankara");
+        cities.add("Hong Kong");
+        cities.add("Delhi");
+        cities.add("Sydney");
+
+        ArrayAdapter<String> citiesAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                cities
+        );
+        fromSpinner.setAdapter(citiesAdapter);
+        toSpinner.setAdapter(citiesAdapter);
+        fromSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        toSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
     }
 }
