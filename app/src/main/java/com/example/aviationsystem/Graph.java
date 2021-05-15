@@ -75,7 +75,7 @@ public class Graph {
 
         for(City vertex : map.keySet()) {
             builder.append(vertex.toString() + ": ");
-            for(City node: map.get(vertex)) {
+            for(City node: map.get(vertex)) { //error here
                 builder.append(node.toString() + " ");
             }
             builder.append("\n");
