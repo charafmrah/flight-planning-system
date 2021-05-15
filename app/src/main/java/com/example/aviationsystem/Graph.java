@@ -2,7 +2,7 @@ package com.example.aviationsystem;
 
 import java.util.*;
 
-public class Graph {
+public class Graph<T> {
 
 
     // edges in graph stored in a hashmap
@@ -17,14 +17,14 @@ public class Graph {
     public void addEdge(City source, City destination, boolean bidirectional) {
 
         if (!map.containsKey(source))
-            addVertex(source);
+            addVertex(source); // if source doesn't exist as a vertex => add it
 
         if (!map.containsKey(destination))
-            addVertex(destination);
+            addVertex(destination); // if destination doesn't exist as a vertext => add it
 
-        map.get(source).addCity(destination);
+        map.get(source).addCity(destination); // gets the source city's linked list and adds destination city
         if (bidirectional == true) {
-            map.get(destination).addCity(source);
+            map.get(destination).addCity(source); // if bidirectional, then get linked list of destination and add source
         }
 
     }
@@ -35,18 +35,17 @@ public class Graph {
 
     public int getEdgesCount(boolean bidirection) {
         int count = 0;
-        for (City city : map.keySet()) {
-            count += map.get(city).getSize();
+        for (City city : map.keySet()) { // keySet() returns the number of keys in the hashmap
+            count += map.get(city).getSize(); // gets the size of linked list for each city
         }
         if (bidirection == true) {
-            count = count / 2;
+            count /= 2; // if graph is bidirectional => count / 2
         }
 
         return count;
     }
 
-    public String hasEdge(City src, City dst)
-    {
+    public String hasEdge(City src, City dst) {
         if (map.get(src).contains(dst)) {
             return "Edge found!";
         }
@@ -56,8 +55,7 @@ public class Graph {
     }
 
 
-    public String hasVertex(City city)
-    {
+    public String hasVertex(City city) {
         if (map.containsKey(city)) {
             return "vertix found!";
         }
@@ -70,17 +68,21 @@ public class Graph {
     // Print the adjacency list for all vertices
     @Override
     public String toString() {
+
         StringBuilder builder = new StringBuilder();
 
+        for (City v : map.keySet()) {
+            builder.append(v.toString() + ": ");
+//             for (T w : map.get(v)) {
+//                 builder.append(w.toString() + " ");
+//             }
+            builder.append(map.get(v).printDataString());
 
-        for(City vertex : map.keySet()) {
-            builder.append(vertex.toString() + ": ");
-            for(City node: map.get(vertex)) { //error here
-                builder.append(node.toString() + " ");
-            }
             builder.append("\n");
         }
-        return builder.toString();
+
+        return (builder.toString());
+
     }
 
 }

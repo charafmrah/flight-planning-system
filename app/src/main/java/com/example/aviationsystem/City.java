@@ -15,7 +15,7 @@ public class City {
     }
 
     public void setArea(int area) {
-        this.area = area;
+        this.area = area; // in Km
     }
 
     public String getName() {

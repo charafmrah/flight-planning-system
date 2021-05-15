@@ -1,6 +1,6 @@
 package com.example.aviationsystem;
 
-public class LinkedList<T> {
+public class LinkedList {
 
     private Node root;
     private int size;
@@ -36,6 +36,17 @@ public class LinkedList<T> {
             System.out.println(currentNode.getCity());
             currentNode = currentNode.getNext();
         }
+    }
+
+    public String printDataString() { //used to print graph
+        Node currentNode = root;
+        String s = "";
+
+        while(currentNode != null) {
+            s += currentNode.getCity() + " ";
+            currentNode = currentNode.getNext();
+        }
+        return s;
     }
 
     public Node addCityToGivenPosition(Node root, int position, City city) {
@@ -105,10 +116,8 @@ public class LinkedList<T> {
     public boolean contains(City city) {
         Node current = root;
 
-        while (current != null)
-        {
-            if (current.getCity().equals(city))
-            {
+        while (current != null) {
+            if (current.getCity().equals(city)) {
                 return true;
             }
 
