@@ -14,7 +14,7 @@ public class Graph<T> {
     }
 
     // add edge between src & dst
-    public void addEdge(City source, City destination, boolean bidirectional) {
+    public void addEdge(City source, City destination, int distance, int cost, boolean bidirectional) {
 
         if (!map.containsKey(source))
             addVertex(source); // if source doesn't exist as a vertex => add it
@@ -22,9 +22,9 @@ public class Graph<T> {
         if (!map.containsKey(destination))
             addVertex(destination); // if destination doesn't exist as a vertext => add it
 
-        map.get(source).addCity(destination); // gets the source city's linked list and adds destination city
+        map.get(source).addCity(destination, distance, cost); // gets the source city's linked list and adds destination city
         if (bidirectional == true) {
-            map.get(destination).addCity(source); // if bidirectional, then get linked list of destination and add source
+            map.get(destination).addCity(source, distance, cost); // if bidirectional, then get linked list of destination and add source
         }
 
     }
@@ -54,6 +54,7 @@ public class Graph<T> {
         }
     }
 
+
     public String hasVertex(City city) {
         if (map.containsKey(city)) {
             return "Vertex " + city.getName() + " found.";
@@ -71,7 +72,7 @@ public class Graph<T> {
         StringBuilder builder = new StringBuilder();
 
         for (City v : map.keySet()) {
-            builder.append(v.toString() + ": ");
+            builder.append(v.getName() + ": ");
 //             for (T w : map.get(v)) {
 //                 builder.append(w.toString() + " ");
 //             }

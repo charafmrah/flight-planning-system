@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private Spinner fromSpinner,toSpinner;
 
+
+
     public static void main(String[] args) {
         // Object of graph is created.
         Graph g = new Graph();
@@ -35,23 +37,23 @@ public class MainActivity extends AppCompatActivity {
         City sydney = new City(72752, "Sydney");
 
         // Boolean is true if the edge is bidirectional
-        g.addEdge(newYork, losAngeles, true);
-        g.addEdge(newYork, dublin, true);
-        g.addEdge(newYork, moscow, false);
-        g.addEdge(berlin, dublin, false);
-        g.addEdge(moscow, dublin, false);
-        g.addEdge(berlin, london, true);
-        g.addEdge(london, paris, false);
-        g.addEdge(london, rome, false);
-        g.addEdge(london, monaco, false);
-        g.addEdge(paris, lille, true);
-        g.addEdge(izmir, ankara, true);
-        g.addEdge(ankara, rome, true);
-        g.addEdge(hongKong, monaco, true);
-        g.addEdge(hongKong, delhi, true);
-        g.addEdge(delhi, moscow, false);
-        g.addEdge(delhi, lille, true);
-        g.addEdge(delhi, sydney, true);
+        g.addEdge(newYork, losAngeles, 34, 35, true);
+        g.addEdge(newYork, dublin, 325, 3525, true);
+        g.addEdge(newYork, moscow, 52352, 299, false);
+        g.addEdge(berlin, dublin, 29092, 25458, false);
+        g.addEdge(moscow, dublin, 9298, 290, false);
+        g.addEdge(berlin, london, 394, 9298, true);
+        g.addEdge(london, paris, 29394, 20093, false);
+        g.addEdge(london, rome, 29834, 928389, false);
+        g.addEdge(london, monaco, 354298, 92348, false);
+        g.addEdge(paris, lille, 53259, 293584, true);
+        g.addEdge(izmir, ankara, 2059838, 209, true);
+        g.addEdge(ankara, rome, 2359, 2938, true);
+        g.addEdge(hongKong, monaco,388, 9238, true);
+        g.addEdge(hongKong, delhi, 230939, 23998, true);
+        g.addEdge(delhi, moscow, 238998, 9023, false);
+        g.addEdge(delhi, lille, 2983, 9283, true);
+        g.addEdge(delhi, sydney, 23908, 2308, true);
     }
 
     @Override

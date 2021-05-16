@@ -14,8 +14,16 @@ public class LinkedList {
         return (root == null);
     }
 
-    public void addCity(City city) {
-        Node newNode = new Node(city);
+//    public void addAdjacent(Node vertex){
+//		adjacent.add(vertex);
+//	}
+
+//    public void addAdjacent(int endVertex, int weight){
+//		adjacent.add(new Edge(endVertex,weight));
+//	}
+
+    public void addCity(City city, int distance, int cost) {
+        Node newNode = new Node(new Edge(city, distance, cost));
         Node currentNode = root;
 
         if(isEmpty())
@@ -38,7 +46,7 @@ public class LinkedList {
         }
     }
 
-    public String printCities() { // print cities in the linked list
+    public String printCities() { //used to print graph
         Node currentNode = root;
         String s = "";
 
@@ -47,30 +55,6 @@ public class LinkedList {
             currentNode = currentNode.getNext();
         }
         return s;
-    }
-
-    public Node addCityToGivenPosition(Node root, int position, City city) {
-        if(position <= 0)
-            System.out.println("invalid position");
-        else {
-            Node newNode = new Node (city);
-            Node previous = root;
-
-            int count = 1;
-            while(count < position - 1) {
-                previous = previous.getNext();
-                count++;
-            }
-            if(previous == null) {
-                previous = newNode;
-            }
-            else {
-                Node current = previous.getNext();
-                newNode.setNext(current);
-                previous.setNext(newNode);
-            }
-        }
-        return root;
     }
 
     public void deleteCity(City city) {
