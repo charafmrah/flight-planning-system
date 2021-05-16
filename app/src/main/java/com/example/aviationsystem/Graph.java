@@ -76,7 +76,7 @@ public class Graph<T> {
 //             for (T w : map.get(v)) {
 //                 builder.append(w.toString() + " ");
 //             }
-            builder.append(map.get(v).printDataString());
+            builder.append(map.get(v).printCities());
 
             builder.append("\n");
         }

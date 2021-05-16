@@ -38,12 +38,12 @@ public class LinkedList {
         }
     }
 
-    public String printDataString() { //used to print graph
+    public String printCities() { // print cities in the linked list
         Node currentNode = root;
         String s = "";
 
         while(currentNode != null) {
-            s += currentNode.getCity() + " ";
+            s += currentNode.getCity().getName() + " - ";
             currentNode = currentNode.getNext();
         }
         return s;
