@@ -47,20 +47,19 @@ public class Graph<T> {
 
     public String hasEdge(City src, City dst) {
         if (map.get(src).contains(dst)) {
-            return "Edge found!";
+            return "Edge (" + src.getName() + " - " + dst.getName() + ") found.";
         }
         else {
-            return "Edge was NOT found!";
+            return "Edge (" + src.getName() + " - " + dst.getName() + ") NOT found!";
         }
     }
 
-
     public String hasVertex(City city) {
         if (map.containsKey(city)) {
-            return "vertix found!";
+            return "Vertex " + city.getName() + " found.";
         }
         else {
-            return "vertix was NOT found!";
+            return "Vertex " + city.getName() + " NOT found!";
         }
     }
 
