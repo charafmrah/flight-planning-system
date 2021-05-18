@@ -1,6 +1,10 @@
 package com.example.aviationsystem;
 
 import java.util.*;
+import java.util.PriorityQueue;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Graph<T> {
 
@@ -91,5 +95,43 @@ public class Graph<T> {
         return (builder.toString());
 
     }
+    public void computePaths(City source)
+    {
+        source.minDistance = 0.;
+        PriorityQueue<City> vertexQueue = new PriorityQueue<City>();
+        vertexQueue.add(source);
+
+        while (!vertexQueue.isEmpty()) {
+            City u = vertexQueue.poll();
+
+            // Visit each edge exiting u
+            //.adjancencies was an edge array
+            for (Edge e : u.adjacencies)
+            {
+                City v = e.getEndVertex();
+                int weight = e.getDistance();
+                double distanceThroughU = u.minDistance + weight;
+                if (distanceThroughU < v.minDistance) {
+                    vertexQueue.remove(v);
+
+                    v.minDistance = distanceThroughU ;
+                    v.previous = u;
+                    vertexQueue.add(v);
+                }
+            }
+        }
+    }
+
+    public List<City> getShortestPathTo(City target)
+    {
+        List<City> path = new ArrayList<City>();
+        for (City vertex = target; vertex != null; vertex = vertex.previous)
+            path.add(vertex);
+
+        Collections.reverse(path);
+        return path;
+    }
+
+}
 
 }

@@ -1,9 +1,11 @@
 package com.example.aviationsystem;
 
-public class City {
+public class City implements Comparable<City> {
 
     private int area;
     private String name;
+    public double minDistance = Double.POSITIVE_INFINITY;
+    public City previous;
 
     public City(int area, String name) {
         this.area = area;
@@ -29,5 +31,9 @@ public class City {
     @Override
     public String toString() {
         return "City [name = " + name + ", area in km^2 = " + area +"]";
+    }
+    public int compareTo(City other) {
+        // TODO Auto-generated method stub
+        return Double.compare(minDistance, other.minDistance);
     }
 }
