@@ -63,7 +63,14 @@ public class Graph<T> {
             return "Vertex " + city.getName() + " NOT found!";
         }
     }
-
+    
+    public int getDistance(City v) {
+    	return map.get(v).getRoot().getEdge().getCost();
+    }
+    
+    public int getCost(City v) {
+    	return map.get(v).getRoot().getEdge().getCost();
+    }
 
     // Print the adjacency list for all vertices
     @Override
