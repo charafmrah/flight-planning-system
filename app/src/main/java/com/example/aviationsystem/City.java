@@ -1,6 +1,6 @@
 package com.example.aviationsystem;
 
-public class City implements Comparable<City> {
+public class City {
 
     private int area;
     private String name;
@@ -32,8 +32,5 @@ public class City implements Comparable<City> {
     public String toString() {
         return "City [name = " + name + ", area in km^2 = " + area +"]";
     }
-    public int compareTo(City other) {
-        // TODO Auto-generated method stub
-        return Double.compare(minDistance, other.minDistance);
-    }
+
 }
