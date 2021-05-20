@@ -1,7 +1,6 @@
 package com.example.aviationsystem;
 
 import java.util.*;
-import java.util.PriorityQueue;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,8 +51,7 @@ public class Graph<T> {
     public String hasEdge(City src, City dst) {
         if (map.get(src).contains(dst)) {
             return "Edge (" + src.getName() + " - " + dst.getName() + ") found.";
-        }
-        else {
+        } else {
             return "Edge (" + src.getName() + " - " + dst.getName() + ") NOT found!";
         }
     }
@@ -62,18 +60,17 @@ public class Graph<T> {
     public String hasVertex(City city) {
         if (map.containsKey(city)) {
             return "Vertex " + city.getName() + " found.";
-        }
-        else {
+        } else {
             return "Vertex " + city.getName() + " NOT found!";
         }
     }
-    
+
     public int getDistance(City v) {
-    	return map.get(v).getRoot().getEdge().getCost();
+        return map.get(v).getRoot().getEdge().getCost();
     }
-    
+
     public int getCost(City v) {
-    	return map.get(v).getRoot().getEdge().getCost();
+        return map.get(v).getRoot().getEdge().getCost();
     }
 
     // Print the adjacency list for all vertices
@@ -95,43 +92,119 @@ public class Graph<T> {
         return (builder.toString());
 
     }
-    public void computePaths(City source)
-    {
-        source.minDistance = 0.;
-        PriorityQueue<City> vertexQueue = new PriorityQueue<City>();
-        vertexQueue.add(source);
+    private Set<City> settledNodes;
+    private Set<City> unSettledNodes;
+    private Map<City, City> predecessors;
+    private Map<City, Integer> distance;
 
-        while (!vertexQueue.isEmpty()) {
-            City u = vertexQueue.poll();
+    // public DijkstraAlgorithm(Graph graph) {
+    // create a copy of the array so that we can operate on this array
+    //  this.nodes = new ArrayList<Vertex>(graph.getVertexes());
+    //   this.edges = new ArrayList<Edge>(graph.getEdges());
+    //  }
 
-            // Visit each edge exiting u
-            //.adjancencies was an edge array
-            for (Edge e : u.adjacencies)
-            {
-                City v = e.getEndVertex();
-                int weight = e.getDistance();
-                double distanceThroughU = u.minDistance + weight;
-                if (distanceThroughU < v.minDistance) {
-                    vertexQueue.remove(v);
+    public void execute(City source) {
+        settledNodes = new HashSet<City>();
+        unSettledNodes = new HashSet<City>();
+        distance = new HashMap<City, Integer>();
+        predecessors = new HashMap<City, City>();
+        distance.put(source, 0);
+        unSettledNodes.add(source);
+        while (unSettledNodes.size() > 0) {
+            City node = getMinimum(unSettledNodes);
+            settledNodes.add(node);
+            unSettledNodes.remove(node);
+            findMinimalDistances(node);
 
-                    v.minDistance = distanceThroughU ;
-                    v.previous = u;
-                    vertexQueue.add(v);
+        }
+    }
+    private void findMinimalDistances(City node) {
+        List<City> adjacentNodes = getNeighbors(node);
+        for (City target : adjacentNodes) {
+            if (getShortestDistance(target) > getShortestDistance(node)
+                    + getDistance(node, target)) {
+                distance.put(target, getShortestDistance(node)
+                        + getDistance(node, target));
+                predecessors.put(target, node);
+                unSettledNodes.add(target);
+            }
+        }
+
+    }
+
+    private int getDistance(City node, City target) {
+        for (City c : map.keySet()) {
+            if (c.equals(node)
+                    && map.get(c).getRoot().getEdge().getEndVertex().equals(target)) {
+                return map.get(c).getRoot().getEdge().getDistance();
+            }
+        }
+        throw new RuntimeException("Should not happen");
+    }
+
+
+    //this method only returns first neighbor of each city
+
+    private List<City> getNeighbors(City node) {
+        List<City> neighbors = new ArrayList<City>();
+        for (City c : map.keySet()) {
+            if (c.equals(node)
+                    && !isSettled(map.get(c).getRoot().getEdge().getEndVertex())) {
+                neighbors.add(map.get(c).getRoot().getEdge().getEndVertex());
+            }
+        }
+        return neighbors;
+    }
+
+    private City getMinimum(Set<City> vertexes) {
+        City minimum = null;
+        for (City vertex : vertexes) {
+            if (minimum == null) {
+                minimum = vertex;
+            } else {
+                if (getShortestDistance(vertex) < getShortestDistance(minimum)) {
+                    minimum = vertex;
                 }
             }
         }
+        return minimum;
     }
 
-    public List<City> getShortestPathTo(City target)
-    {
-        List<City> path = new ArrayList<City>();
-        for (City vertex = target; vertex != null; vertex = vertex.previous)
-            path.add(vertex);
+    private boolean isSettled(City vertex) {
+        return settledNodes.contains(vertex);
+    }
 
+    private int getShortestDistance(City destination) {
+        Integer d = distance.get(destination);
+        if (d == null) {
+            return Integer.MAX_VALUE;
+        } else {
+            return d;
+        }
+    }
+
+    /*
+     * This method returns the path from the source to the selected target and
+     * NULL if no path exists
+     */
+    public List<City> getPath(City target) {
+        List<City> path = new ArrayList<City>();
+        City step = target;
+        // check if a path exists
+        if (predecessors.get(step) == null) {
+            return null;
+        }
+        path.add(step);
+        while (predecessors.get(step) != null) {
+            step = predecessors.get(step);
+            path.add(step);
+        }
+        // Put it into the correct order
         Collections.reverse(path);
         return path;
     }
 
 }
+
 
 

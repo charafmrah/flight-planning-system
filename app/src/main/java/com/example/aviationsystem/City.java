@@ -4,7 +4,6 @@ public class City {
 
     private int area;
     private String name;
-    public double minDistance = Double.POSITIVE_INFINITY;
     public City previous;
 
     public City(int area, String name) {

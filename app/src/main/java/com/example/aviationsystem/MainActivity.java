@@ -55,9 +55,8 @@ public class MainActivity extends AppCompatActivity {
         g.addEdge(delhi, moscow, 238998, 9023, false);
         g.addEdge(delhi, lille, 2983, 9283, true);
         g.addEdge(delhi, sydney, 23908, 2308, true);
-        g.computePaths(newYork);
-        List<City> path = g.getShortestPathTo(paris);
-        System.out.println(path);
+        g.execute(berlin);
+        System.out.println(g.getPath(moscow));
     }
 
     @Override
