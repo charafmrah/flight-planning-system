@@ -2,21 +2,10 @@ package com.example.aviationsystem;
 
 public class City {
 
-    private int area;
     private String name;
-    public City previous;
 
-    public City(int area, String name) {
-        this.area = area;
+    public City(String name) {
         this.name = name;
-    }
-
-    public int getArea() {
-        return area;
-    }
-
-    public void setArea(int area) {
-        this.area = area; // in Km
     }
 
     public String getName() {
@@ -29,7 +18,7 @@ public class City {
 
     @Override
     public String toString() {
-        return "City [name = " + name + ", area in km^2 = " + area +"]";
+        return "City [name = " + name + " ]";
     }
 
 }
