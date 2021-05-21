@@ -10,6 +10,7 @@ import android.widget.Spinner;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,28 +22,29 @@ public class MainActivity extends AppCompatActivity {
         // Object of graph is created.
         Graph g = new Graph();
 
-        City newYork = new City(555, "New York");
-        City dublin = new City(999, "Dublin");
-        City berlin = new City(325, "Berlin");
-        City london = new City(353453, "London");
-        City paris = new City(3554, "Paris");
-        City losAngeles = new City(5720, "Los Angeles");
-        City moscow = new City(997345, "Moscow");
-        City rome = new City(98454, "Rome");
-        City monaco = new City(423, "Monaco");
-        City lille = new City(25643, "Lille");
-        City izmir = new City(75857, "Izmir");
-        City ankara = new City(7852, "Ankara");
-        City hongKong = new City(272527, "Hong Kong");
-        City delhi = new City(753773, "Delhi");
-        City sydney = new City(72752, "Sydney");
+        City newYork = new City("New York");
+        City dublin = new City("Dublin");
+        City berlin = new City("Berlin");
+        City london = new City("London");
+        City paris = new City("Paris");
+        City losAngeles = new City("Los Angeles");
+        City moscow = new City("Moscow");
+        City rome = new City("Rome");
+        City monaco = new City("Monaco");
+        City lille = new City("Lille");
+        City izmir = new City("Izmir");
+        City ankara = new City("Ankara");
+        City hongKong = new City("Hong Kong");
+        City delhi = new City("Delhi");
+        City sydney = new City("Sydney");
 
         // Boolean is true if the edge is bidirectional
-        g.addEdge(newYork, losAngeles, 34, 35, true);
+        g.addEdge(newYork, losAngeles, 995, 35, true);
         g.addEdge(newYork, dublin, 325, 3525, true);
         g.addEdge(newYork, moscow, 52352, 299, false);
         g.addEdge(berlin, dublin, 29092, 25458, false);
         g.addEdge(moscow, dublin, 9298, 290, false);
+        g.addEdge(moscow, berlin, 2424, 98324, false);
         g.addEdge(berlin, london, 394, 9298, true);
         g.addEdge(london, paris, 29394, 20093, false);
         g.addEdge(london, rome, 29834, 928389, false);
@@ -55,8 +57,13 @@ public class MainActivity extends AppCompatActivity {
         g.addEdge(delhi, moscow, 238998, 9023, false);
         g.addEdge(delhi, lille, 2983, 9283, true);
         g.addEdge(delhi, sydney, 23908, 2308, true);
-        g.execute(berlin);
-        System.out.println(g.getPath(moscow));
+
+        List<String> shortestPath = g.getShortestPath(newYork, izmir);
+        System.out.println(Arrays.toString(shortestPath.toArray()));
+
+        List<String> cheapestPath = g.getCheapestPath(newYork, izmir);
+        System.out.println(Arrays.toString(cheapestPath.toArray()));
+
     }
 
     @Override

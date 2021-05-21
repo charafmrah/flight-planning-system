@@ -1,6 +1,6 @@
-package com.example.aviationsystem;
-
 // Edge class contains information to be stored in Node of the linked list
+
+package com.example.aviationsystem;
 
 public class Edge {
 

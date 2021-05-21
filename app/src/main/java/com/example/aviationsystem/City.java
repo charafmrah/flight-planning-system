@@ -1,3 +1,5 @@
+// This class wraps the City class to add functionality used in the dijkstra algorithm
+
 package com.example.aviationsystem;
 
 public class City {

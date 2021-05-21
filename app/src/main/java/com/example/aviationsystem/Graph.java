@@ -1,5 +1,7 @@
+// Graph is implemented using a hashmap,
+// which stores adjacency list in a linked list. The citys are the keys.
+
 package com.example.aviationsystem;
-// Graph is implemented using a hashmap, which stores adjacency list in a linked list. The citys are the keys.
 
 import java.util.*;
 
@@ -21,7 +23,7 @@ public class Graph<T> {
             addVertex(source); // if source doesn't exist as a vertex => add it
 
         if (!map.containsKey(destination))
-            addVertex(destination); // if destination doesn't exist as a vertext => add it
+            addVertex(destination); // if destination doesn't exist as a vertex => add it
 
         map.get(source).addCity(destination, distance, cost); // gets the source city's linked list and adds destination city
         if (bidirectional == true) {
@@ -97,7 +99,7 @@ public class Graph<T> {
 
             // If we reach the target, return the path
             if(city.equals(target)) {
-                return buildPath(cityWrapper);
+                return buildShortPath(cityWrapper);
             }
 
             // Iterate over all neighbors
@@ -125,7 +127,7 @@ public class Graph<T> {
                     neighborWrapper.setTotalDistance(totalDistance);
                     neighborWrapper.setPredecessor(cityWrapper);
 
-                    // reheap the min heap
+                    // re-heap the min heap
                     queue.remove(neighborWrapper);
                     queue.add(neighborWrapper);
                 }
@@ -136,7 +138,73 @@ public class Graph<T> {
         return null;
     }
 
-    public List<String> buildPath(CityWrapper cityWrapper) {
+    public List<String> getCheapestPath(City source, City target) {
+        PriorityQueue<CityCostWrapper> queue = new PriorityQueue(); // Min heap
+        Map<City, CityCostWrapper> cityWrappers = new HashMap<>(); // Get corresponding CityWrapper for city
+        Set<City> shortestPathFound = new HashSet<>(); // Edges.endvertex already visited
+
+        CityCostWrapper sourceWrapper = new CityCostWrapper(source, 0, null);
+        cityWrappers.put(source, sourceWrapper);
+        queue.add(sourceWrapper);
+
+
+        while(!queue.isEmpty()) {
+            CityCostWrapper cityWrapper = queue.poll();
+            City city = cityWrapper.getCity();
+            shortestPathFound.add(city);
+
+            if(city.equals(target)) {
+                return buildCheapPath(cityWrapper);
+            }
+
+            Set<City> neighbors = map.get(city).getCitiesSet();
+            for(City neighbor : neighbors) {
+                if(shortestPathFound.contains(neighbor)) {
+                    continue;
+                }
+
+                int cost = map.get(city).getDistance(neighbor);
+                int totalDistance = cityWrapper.getTotalCost() + cost;
+
+                CityCostWrapper neighborWrapper = cityWrappers.get(neighbor);
+                if(neighborWrapper == null) {
+                    neighborWrapper = new CityCostWrapper(neighbor, totalDistance, cityWrapper);
+                    cityWrappers.put(neighbor, neighborWrapper);
+                    queue.add(neighborWrapper);
+                }
+
+
+                else if(totalDistance < neighborWrapper.getTotalCost()) {
+                    neighborWrapper.setTotalCost(totalDistance);
+                    neighborWrapper.setPredecessor(cityWrapper);
+
+                    // re-heap
+                    queue.remove(neighborWrapper);
+                    queue.add(neighborWrapper);
+                }
+            }
+
+        }
+
+        return null;
+    }
+
+    // build the shortest path
+    public List<String> buildShortPath(CityWrapper cityWrapper) {
+        List<String> path = new ArrayList<>();
+
+        while(cityWrapper != null) {
+            path.add(cityWrapper.getCity().getName());
+            cityWrapper = cityWrapper.getPredecessor();
+        }
+
+        Collections.reverse(path);
+
+        return path;
+    }
+
+    // build the cheapest path
+    public List<String> buildCheapPath(CityCostWrapper cityWrapper) {
         List<String> path = new ArrayList<>();
 
         while(cityWrapper != null) {
@@ -150,7 +218,3 @@ public class Graph<T> {
     }
 
 }
-
-
-
-
