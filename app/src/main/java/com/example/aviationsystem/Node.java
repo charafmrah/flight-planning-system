@@ -1,4 +1,5 @@
 package com.example.aviationsystem;
+// Node class is used in LinkedList class
 
 public class Node {
     private Edge edge;
@@ -23,21 +24,16 @@ public class Node {
         return edge.getEndVertex();
     }
 
-//	    public void setCity(City city) {
-//	        this.city = city;
-//	    }
-
     public Node getNext() {
         return next;
+    }
+
+    public Edge getEdge() {
+        return this.edge;
     }
 
     public void setNext(Node next) {
         this.next = next;
     }
-    
-    public Edge getEdge() {
-	    	return this.edge;
-	    }
-    
-}
 
+}

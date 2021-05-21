@@ -1,27 +1,25 @@
 package com.example.aviationsystem;
 
+// Linked List class is used to store adjacency list in the graph
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class LinkedList {
 
     private Node root;
     private int size;
 
     public LinkedList() {
-        root = null;
-        size = 0;
+        this.root = null;
+        this.size = 0;
     }
 
     public boolean isEmpty() {
         return (root == null);
     }
 
-//    public void addAdjacent(Node vertex){
-//		adjacent.add(vertex);
-//	}
-
-//    public void addAdjacent(int endVertex, int weight){
-//		adjacent.add(new Edge(endVertex,weight));
-//	}
-
+    // add city to the linked list
     public void addCity(City city, int distance, int cost) {
         Node newNode = new Node(new Edge(city, distance, cost));
         Node currentNode = root;
@@ -37,16 +35,8 @@ public class LinkedList {
         size++;
     }
 
-    public void printData() {
-        Node currentNode = root;
-
-        while(currentNode != null) {
-            System.out.println(currentNode.getCity());
-            currentNode = currentNode.getNext();
-        }
-    }
-
-    public String printCities() { //used to print graph
+    // used to print graph
+    public String printCities() {
         Node currentNode = root;
         String s = "";
 
@@ -55,6 +45,45 @@ public class LinkedList {
             currentNode = currentNode.getNext();
         }
         return s;
+    }
+
+    // Returns the cities in the linked list in a Set
+    public Set<City> getCitiesSet() {
+        Set<City> mySet = new HashSet<>();
+        Node currentNode = root;
+
+        while(currentNode != null) {
+            mySet.add(currentNode.getCity());
+            currentNode = currentNode.getNext();
+        }
+
+        return mySet;
+    }
+
+    public int getDistance(City dist) {
+        Node currentNode = root;
+        int result = 0;
+
+        while(currentNode != null) {
+            if(currentNode.getEdge().getEndVertex() == dist) {
+                result = currentNode.getEdge().getDistance();
+            }
+            currentNode = currentNode.getNext();
+        }
+        return result;
+    }
+
+    public int getCost(City dist) {
+        Node currentNode = root;
+        int result = 0;
+
+        while(currentNode != null) {
+            if(currentNode.getEdge().getEndVertex() == dist) {
+                result = currentNode.getEdge().getCost();
+            }
+            currentNode = currentNode.getNext();
+        }
+        return result;
     }
 
     public void deleteCity(City city) {
@@ -75,16 +104,11 @@ public class LinkedList {
         size--;
     }
 
-    public void addToFront(Node city) {
-        city.setNext(root);
-        root = city;
-    }
-
     public Node getRoot() {
         return root;
     }
 
-    public void setHead(Node root) {
+    public void setRoot(Node root) {
         this.root = root;
     }
 

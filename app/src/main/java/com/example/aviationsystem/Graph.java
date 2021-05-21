@@ -1,9 +1,7 @@
 package com.example.aviationsystem;
+// Graph is implemented using a hashmap, which stores adjacency list in a linked list. The citys are the keys.
 
 import java.util.*;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class Graph<T> {
 
@@ -65,14 +63,6 @@ public class Graph<T> {
         }
     }
 
-    public int getDistance(City v) {
-        return map.get(v).getRoot().getEdge().getCost();
-    }
-
-    public int getCost(City v) {
-        return map.get(v).getRoot().getEdge().getCost();
-    }
-
     // Print the adjacency list for all vertices
     @Override
     public String toString() {
@@ -81,130 +71,86 @@ public class Graph<T> {
 
         for (City v : map.keySet()) {
             builder.append(v.getName() + ": ");
-//             for (T w : map.get(v)) {
-//                 builder.append(w.toString() + " ");
-//             }
             builder.append(map.get(v).printCities());
-
             builder.append("\n");
         }
 
         return (builder.toString());
 
     }
-    private Set<City> settledNodes;
-    private Set<City> unSettledNodes;
-    private Map<City, City> predecessors;
-    private Map<City, Integer> distance;
 
-    // public DijkstraAlgorithm(Graph graph) {
-    // create a copy of the array so that we can operate on this array
-    //  this.nodes = new ArrayList<Vertex>(graph.getVertexes());
-    //   this.edges = new ArrayList<Edge>(graph.getEdges());
-    //  }
+    public List<String> getShortestPath(City source, City target) {
+        PriorityQueue<CityWrapper> queue = new PriorityQueue(); // Min heap
+        Map<City, CityWrapper> cityWrappers = new HashMap<>(); // Get corresponding CityWrapper for city
+        Set<City> shortestPathFound = new HashSet<>(); // Edges.endvertex already visited
 
-    public void execute(City source) {
-        settledNodes = new HashSet<City>();
-        unSettledNodes = new HashSet<City>();
-        distance = new HashMap<City, Integer>();
-        predecessors = new HashMap<City, City>();
-        distance.put(source, 0);
-        unSettledNodes.add(source);
-        while (unSettledNodes.size() > 0) {
-            City node = getMinimum(unSettledNodes);
-            settledNodes.add(node);
-            unSettledNodes.remove(node);
-            findMinimalDistances(node);
+        CityWrapper sourceWrapper = new CityWrapper(source, 0, null);
+        cityWrappers.put(source, sourceWrapper);
+        queue.add(sourceWrapper);
 
-        }
-    }
-    private void findMinimalDistances(City node) {
-        List<City> adjacentNodes = getNeighbors(node);
-        for (City target : adjacentNodes) {
-            if (getShortestDistance(target) > getShortestDistance(node)
-                    + getDistance(node, target)) {
-                distance.put(target, getShortestDistance(node)
-                        + getDistance(node, target));
-                predecessors.put(target, node);
-                unSettledNodes.add(target);
+
+        while(!queue.isEmpty()) {
+            CityWrapper cityWrapper = queue.poll();
+            City city = cityWrapper.getCity();
+            shortestPathFound.add(city);
+
+
+            // If we reach the target, return the path
+            if(city.equals(target)) {
+                return buildPath(cityWrapper);
             }
-        }
 
-    }
+            // Iterate over all neighbors
+            Set<City> neighbors = map.get(city).getCitiesSet();
+            for(City neighbor : neighbors) {
+                // Ignore neighbor if the shortest path was already found
+                if(shortestPathFound.contains(neighbor)) {
+                    continue;
+                }
 
-    private int getDistance(City node, City target) {
-        for (City c : map.keySet()) {
-            if (c.equals(node)
-                    && map.get(c).getRoot().getEdge().getEndVertex().equals(target)) {
-                return map.get(c).getRoot().getEdge().getDistance();
-            }
-        }
-        throw new RuntimeException("Should not happen");
-    }
+                // Calculate the total distance to neighbor from current node
+                int distance = map.get(city).getDistance(neighbor);
+                int totalDistance = cityWrapper.getTotalDistance() + distance;
 
+                // If neighbor is not discovered yet:
+                CityWrapper neighborWrapper = cityWrappers.get(neighbor);
+                if(neighborWrapper == null) {
+                    neighborWrapper = new CityWrapper(neighbor, totalDistance, cityWrapper);
+                    cityWrappers.put(neighbor, neighborWrapper);
+                    queue.add(neighborWrapper);
+                }
 
-    //this method only returns first neighbor of each city
+                // Update the total distance & predecessor if neighbor is discovered and distance via current is shorter
+                else if(totalDistance < neighborWrapper.getTotalDistance()) {
+                    neighborWrapper.setTotalDistance(totalDistance);
+                    neighborWrapper.setPredecessor(cityWrapper);
 
-    private List<City> getNeighbors(City node) {
-        List<City> neighbors = new ArrayList<City>();
-        for (City c : map.keySet()) {
-            if (c.equals(node)
-                    && !isSettled(map.get(c).getRoot().getEdge().getEndVertex())) {
-                neighbors.add(map.get(c).getRoot().getEdge().getEndVertex());
-            }
-        }
-        return neighbors;
-    }
-
-    private City getMinimum(Set<City> vertexes) {
-        City minimum = null;
-        for (City vertex : vertexes) {
-            if (minimum == null) {
-                minimum = vertex;
-            } else {
-                if (getShortestDistance(vertex) < getShortestDistance(minimum)) {
-                    minimum = vertex;
+                    // reheap the min heap
+                    queue.remove(neighborWrapper);
+                    queue.add(neighborWrapper);
                 }
             }
+
         }
-        return minimum;
+
+        return null;
     }
 
-    private boolean isSettled(City vertex) {
-        return settledNodes.contains(vertex);
-    }
+    public List<String> buildPath(CityWrapper cityWrapper) {
+        List<String> path = new ArrayList<>();
 
-    private int getShortestDistance(City destination) {
-        Integer d = distance.get(destination);
-        if (d == null) {
-            return Integer.MAX_VALUE;
-        } else {
-            return d;
+        while(cityWrapper != null) {
+            path.add(cityWrapper.getCity().getName());
+            cityWrapper = cityWrapper.getPredecessor();
         }
-    }
 
-    /*
-     * This method returns the path from the source to the selected target and
-     * NULL if no path exists
-     */
-    public List<City> getPath(City target) {
-        List<City> path = new ArrayList<City>();
-        City step = target;
-        // check if a path exists
-        if (predecessors.get(step) == null) {
-            return null;
-        }
-        path.add(step);
-        while (predecessors.get(step) != null) {
-            step = predecessors.get(step);
-            path.add(step);
-        }
-        // Put it into the correct order
         Collections.reverse(path);
+
         return path;
     }
 
 }
+
 
 
 
