@@ -202,12 +202,12 @@ public class Graph<T> {
     }
 
     // build the cheapest path
-    public List<String> buildCheapPath(CityCostWrapper cityWrapper) {
+    public List<String> buildCheapPath(CityCostWrapper cityCostWrapper) {
         List<String> path = new ArrayList<>();
 
-        while(cityWrapper != null) {
-            path.add(cityWrapper.getCity().getName());
-            cityWrapper = cityWrapper.getPredecessor();
+        while(cityCostWrapper != null) {
+            path.add(cityCostWrapper.getCity().getName());
+            cityCostWrapper = cityCostWrapper.getPredecessor();
         }
 
         Collections.reverse(path);

@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
                 String shortest = "";
                 String cheapest = "";
                 List<String> shortestPath = g.getShortestPath(from,to);
-                List<String> cheapestPath = g.getShortestPath(from,to);
+                List<String> cheapestPath = g.getCheapestPath(from,to);
                 StringBuilder builder = new StringBuilder();
                 for(String s : shortestPath) {
                     builder.append(s + " -> ");
