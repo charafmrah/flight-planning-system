@@ -135,7 +135,9 @@ public class Graph<T> {
 
         }
 
-        return null;
+        List<String> path = new ArrayList<>();
+        path.add("No available path");
+        return path;
     }
 
     public List<String> getCheapestPath(City source, City target) {
@@ -184,7 +186,9 @@ public class Graph<T> {
 
         }
 
-        return null;
+        List<String> path = new ArrayList<>();
+        path.add("No available path");
+        return path;
     }
 
     // build the shortest path
