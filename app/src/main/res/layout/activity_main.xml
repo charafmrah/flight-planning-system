@@ -65,13 +65,13 @@
         app:layout_constraintTop_toBottomOf="@+id/toSpinner" />
 
     <TextView
-        android:id="@+id/shortestPathsLabelTextView"
+        android:id="@+id/shortestPathLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
-        android:text="The top 3 shortest paths are:"
+        android:text="The shortest path is:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,41 +79,41 @@
         app:layout_constraintTop_toBottomOf="@+id/generateButton" />
 
     <TextView
-        android:id="@+id/cheapestPathsLabelTextView"
+        android:id="@+id/cheapestPathLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
-        android:text="The top 3 cheapest paths are:"
+        android:text="The cheapest path is:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shortestPathsSolutionTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/shortestPathSolutionTextView" />
 
     <TextView
-        android:id="@+id/shortestPathsSolutionTextView"
+        android:id="@+id/shortestPathSolutionTextView"
         android:layout_width="0dp"
-        android:layout_height="13dp"
+        android:layout_height="35dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shortestPathsLabelTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/shortestPathLabelTextView" />
 
     <TextView
-        android:id="@+id/cheapestPathsSolutionTextView2"
+        android:id="@+id/cheapestPathSolutionTextView"
         android:layout_width="0dp"
-        android:layout_height="13dp"
+        android:layout_height="35dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cheapestPathsLabelTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/cheapestPathLabelTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
