@@ -217,9 +217,9 @@ public class MainActivity extends AppCompatActivity {
 
                 StringBuilder builder2 = new StringBuilder();
                 for(String s : cheapestPath) {
-                    builder.append(s + " -> ");
+                    builder2.append(s + " -> ");
                 }
-                cheapest = builder.toString();
+                cheapest = builder2.toString();
 
                 shortestpathtxt.setText(shortest.substring(0, shortest.length()-4));
                 cheapestpathtxt.setText(cheapest.substring(0, cheapest.length()-4));
