@@ -89,24 +89,23 @@ public class MainActivity extends AppCompatActivity {
                 City sydney = new City("Sydney");
 
                 // Boolean is true if the edge is bidirectional
-                g.addEdge(newYork, losAngeles, 995, 35, true);
-                g.addEdge(newYork, dublin, 325, 3525, true);
-                g.addEdge(newYork, moscow, 52352, 299, false);
-                g.addEdge(berlin, dublin, 29092, 25458, false);
-                g.addEdge(moscow, dublin, 9298, 290, false);
-                g.addEdge(moscow, berlin, 2424, 98324, false);
-                g.addEdge(berlin, london, 394, 9298, true);
-                g.addEdge(london, paris, 29394, 20093, false);
-                g.addEdge(london, rome, 29834, 928389, false);
-                g.addEdge(london, monaco, 354298, 92348, false);
-                g.addEdge(paris, lille, 53259, 293584, true);
-                g.addEdge(izmir, ankara, 2059838, 209, true);
-                g.addEdge(ankara, rome, 2359, 2938, true);
-                g.addEdge(hongKong, monaco,388, 9238, true);
-                g.addEdge(hongKong, delhi, 230939, 23998, true);
-                g.addEdge(delhi, moscow, 238998, 9023, false);
-                g.addEdge(delhi, lille, 2983, 9283, true);
-                g.addEdge(delhi, sydney, 23908, 2308, true);
+                g.addEdge(newYork, losAngeles, 3944, 2589, true);
+                g.addEdge(newYork, dublin, 5112, 3169, true);
+                g.addEdge(newYork, moscow, 7531, 6029, false);
+                g.addEdge(berlin, dublin, 1317, 509, false);
+                g.addEdge(moscow, berlin, 1608, 2281, false);
+                g.addEdge(berlin, london, 932, 1350, true);
+                g.addEdge(london, paris, 344, 1025, false);
+                g.addEdge(london, rome, 1433, 1295, false);
+                g.addEdge(london, monaco, 1032, 1379, false);
+                g.addEdge(paris, lille, 204, 3764, true);
+                g.addEdge(izmir, ankara, 522, 326, true);
+                g.addEdge(ankara, rome, 1721, 1427, true);
+                g.addEdge(hongKong, monaco, 9568, 3459, true);
+                g.addEdge(hongKong, delhi, 3770, 3104, true);
+                g.addEdge(delhi, moscow, 4344, 3135, false);
+                g.addEdge(delhi, lille, 6373, 5129, true);
+                g.addEdge(delhi, sydney, 10426, 8095, true);
 
                 City from = null;
                 City to = null;

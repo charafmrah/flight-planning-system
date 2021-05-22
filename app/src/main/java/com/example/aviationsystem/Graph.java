@@ -135,6 +135,7 @@ public class Graph<T> {
 
         }
 
+        // If no path is found:
         List<String> path = new ArrayList<>();
         path.add("No available path");
         return path;
