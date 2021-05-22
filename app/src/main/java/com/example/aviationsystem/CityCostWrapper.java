@@ -17,8 +17,8 @@ public class CityCostWrapper implements Comparable<CityCostWrapper> {
         return totalCost;
     }
 
-    public void setTotalCost(int totalDistance) {
-        this.totalCost = totalDistance;
+    public void setTotalCost(int totalCost) {
+        this.totalCost = totalCost;
     }
 
     public CityCostWrapper getPredecessor() {

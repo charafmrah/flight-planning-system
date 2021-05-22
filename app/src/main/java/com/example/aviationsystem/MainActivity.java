@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static void main(String[] args) {
-        // Object of graph is created.
+
 
     }
 
@@ -62,34 +62,7 @@ public class MainActivity extends AppCompatActivity {
         );
         fromSpinner.setAdapter(citiesAdapter);
         toSpinner.setAdapter(citiesAdapter);
-        fromSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-              Toast.makeText(MainActivity.this, cities.get(pos) + "sheesh", Toast.LENGTH_LONG).show();
 
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        toSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
         Button btn = (Button) findViewById(R.id.generateButton);
         TextView shortestpathtxt = findViewById(R.id.shortestPathSolutionTextView);
         TextView cheapestpathtxt = findViewById(R.id.cheapestPathSolutionTextView);
@@ -238,22 +211,18 @@ public class MainActivity extends AppCompatActivity {
                 List<String> cheapestPath = g.getShortestPath(from,to);
                 StringBuilder builder = new StringBuilder();
                 for(String s : shortestPath) {
-                    builder.append(s + "->");
+                    builder.append(s + " -> ");
                 }
                 shortest = builder.toString();
 
                 StringBuilder builder2 = new StringBuilder();
                 for(String s : cheapestPath) {
-                    builder.append(s + "->");
+                    builder.append(s + " -> ");
                 }
                 cheapest = builder.toString();
 
-                shortestpathtxt.setText(shortest.substring(0, shortest.length()-2));
-                cheapestpathtxt.setText(cheapest.substring(0, cheapest.length()-2));
-
-
-
-
+                shortestpathtxt.setText(shortest.substring(0, shortest.length()-4));
+                cheapestpathtxt.setText(cheapest.substring(0, cheapest.length()-4));
 
             }
         });

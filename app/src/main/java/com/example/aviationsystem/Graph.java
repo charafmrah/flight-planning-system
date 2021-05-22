@@ -140,13 +140,12 @@ public class Graph<T> {
 
     public List<String> getCheapestPath(City source, City target) {
         PriorityQueue<CityCostWrapper> queue = new PriorityQueue(); // Min heap
-        Map<City, CityCostWrapper> cityWrappers = new HashMap<>(); // Get corresponding CityWrapper for city
+        Map<City, CityCostWrapper> cityCostWrappers = new HashMap<>(); // Get corresponding CityWrapper for city
         Set<City> shortestPathFound = new HashSet<>(); // Edges.endvertex already visited
 
         CityCostWrapper sourceWrapper = new CityCostWrapper(source, 0, null);
-        cityWrappers.put(source, sourceWrapper);
+        cityCostWrappers.put(source, sourceWrapper);
         queue.add(sourceWrapper);
-
 
         while(!queue.isEmpty()) {
             CityCostWrapper cityWrapper = queue.poll();
@@ -163,19 +162,18 @@ public class Graph<T> {
                     continue;
                 }
 
-                int cost = map.get(city).getDistance(neighbor);
-                int totalDistance = cityWrapper.getTotalCost() + cost;
+                int cost = map.get(city).getCost(neighbor);
+                int totalCost = cityWrapper.getTotalCost() + cost;
 
-                CityCostWrapper neighborWrapper = cityWrappers.get(neighbor);
+                CityCostWrapper neighborWrapper = cityCostWrappers.get(neighbor);
                 if(neighborWrapper == null) {
-                    neighborWrapper = new CityCostWrapper(neighbor, totalDistance, cityWrapper);
-                    cityWrappers.put(neighbor, neighborWrapper);
+                    neighborWrapper = new CityCostWrapper(neighbor, totalCost, cityWrapper);
+                    cityCostWrappers.put(neighbor, neighborWrapper);
                     queue.add(neighborWrapper);
                 }
 
-
-                else if(totalDistance < neighborWrapper.getTotalCost()) {
-                    neighborWrapper.setTotalCost(totalDistance);
+                else if(totalCost < neighborWrapper.getTotalCost()) {
+                    neighborWrapper.setTotalCost(totalCost);
                     neighborWrapper.setPredecessor(cityWrapper);
 
                     // re-heap
