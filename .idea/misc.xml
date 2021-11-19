@@ -3,19 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
         <entry key="..\:/Users/chara/AndroidStudioProjects/AviationSystem/app/src/main/res/layout/homepage.xml" value="0.22135416666666666" />
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
-=======
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2717391304347826" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
->>>>>>> fd7727d7ff2cca77ddd4d44c629ae5ca24ce3028
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
