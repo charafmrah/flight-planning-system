@@ -1,6 +1,8 @@
 // Edge class contains information to be stored in Node of the linked list
 
-package com.example.aviationsystem;
+package com.example.aviationsystem.datastructures;
+
+import com.example.aviationsystem.City;
 
 public class Edge {
 

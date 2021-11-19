@@ -1,13 +1,15 @@
 // This class is used to encapsulate City to get the cheapest path in Graph class
 
-package com.example.aviationsystem;
+package com.example.aviationsystem.wrappers;
+
+import com.example.aviationsystem.City;
 
 public class CityCostWrapper implements Comparable<CityCostWrapper> {
     private City city;
     private int totalCost;
     private CityCostWrapper predecessor;
 
-    CityCostWrapper(City city, int totalCost, CityCostWrapper predecessor) {
+    public CityCostWrapper(City city, int totalCost, CityCostWrapper predecessor) {
         this.city = city;
         this.totalCost = totalCost;
         this.predecessor = predecessor;

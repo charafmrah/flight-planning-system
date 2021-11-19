@@ -1,7 +1,11 @@
 // Graph is implemented using a hashmap,
 // which stores adjacency list in a linked list. The citys are the keys.
 
-package com.example.aviationsystem;
+package com.example.aviationsystem.datastructures;
+
+import com.example.aviationsystem.City;
+import com.example.aviationsystem.wrappers.CityCostWrapper;
+import com.example.aviationsystem.wrappers.CityDistanceWrapper;
 
 import java.util.*;
 
@@ -82,24 +86,24 @@ public class Graph<T> {
     }
 
     public List<String> getShortestPath(City source, City target) {
-        PriorityQueue<CityWrapper> queue = new PriorityQueue(); // Min heap
-        Map<City, CityWrapper> cityWrappers = new HashMap<>(); // Get corresponding CityWrapper for city
+        PriorityQueue<CityDistanceWrapper> queue = new PriorityQueue(); // Min heap
+        Map<City, CityDistanceWrapper> cityWrappers = new HashMap<>(); // Get corresponding CityWrapper for city
         Set<City> shortestPathFound = new HashSet<>(); // Edges.endvertex already visited
 
-        CityWrapper sourceWrapper = new CityWrapper(source, 0, null);
+        CityDistanceWrapper sourceWrapper = new CityDistanceWrapper(source, 0, null);
         cityWrappers.put(source, sourceWrapper);
         queue.add(sourceWrapper);
 
 
         while(!queue.isEmpty()) {
-            CityWrapper cityWrapper = queue.poll();
-            City city = cityWrapper.getCity();
+            CityDistanceWrapper cityDistanceWrapper = queue.poll();
+            City city = cityDistanceWrapper.getCity();
             shortestPathFound.add(city);
 
 
             // If we reach the target, return the path
             if(city.equals(target)) {
-                return buildShortPath(cityWrapper);
+                return buildShortPath(cityDistanceWrapper);
             }
 
             // Iterate over all neighbors
@@ -112,12 +116,12 @@ public class Graph<T> {
 
                 // Calculate the total distance to neighbor from current node
                 int distance = map.get(city).getDistance(neighbor);
-                int totalDistance = cityWrapper.getTotalDistance() + distance;
+                int totalDistance = cityDistanceWrapper.getTotalDistance() + distance;
 
                 // If neighbor is not discovered yet:
-                CityWrapper neighborWrapper = cityWrappers.get(neighbor);
+                CityDistanceWrapper neighborWrapper = cityWrappers.get(neighbor);
                 if(neighborWrapper == null) {
-                    neighborWrapper = new CityWrapper(neighbor, totalDistance, cityWrapper);
+                    neighborWrapper = new CityDistanceWrapper(neighbor, totalDistance, cityDistanceWrapper);
                     cityWrappers.put(neighbor, neighborWrapper);
                     queue.add(neighborWrapper);
                 }
@@ -125,7 +129,7 @@ public class Graph<T> {
                 // Update the total distance & predecessor if neighbor is discovered and distance via current is shorter
                 else if(totalDistance < neighborWrapper.getTotalDistance()) {
                     neighborWrapper.setTotalDistance(totalDistance);
-                    neighborWrapper.setPredecessor(cityWrapper);
+                    neighborWrapper.setPredecessor(cityDistanceWrapper);
 
                     // re-heap the min heap
                     queue.remove(neighborWrapper);
@@ -193,12 +197,12 @@ public class Graph<T> {
     }
 
     // build the shortest path
-    public List<String> buildShortPath(CityWrapper cityWrapper) {
+    public List<String> buildShortPath(CityDistanceWrapper cityDistanceWrapper) {
         List<String> path = new ArrayList<>();
 
-        while(cityWrapper != null) {
-            path.add(cityWrapper.getCity().getName());
-            cityWrapper = cityWrapper.getPredecessor();
+        while(cityDistanceWrapper != null) {
+            path.add(cityDistanceWrapper.getCity().getName());
+            cityDistanceWrapper = cityDistanceWrapper.getPredecessor();
         }
 
         Collections.reverse(path);

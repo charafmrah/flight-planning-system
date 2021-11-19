@@ -1,13 +1,15 @@
 // This class wraps the City class to add functionality used in the dijkstra algorithm
 
-package com.example.aviationsystem;
+package com.example.aviationsystem.wrappers;
 
-public class CityWrapper implements Comparable<CityWrapper> {
+import com.example.aviationsystem.City;
+
+public class CityDistanceWrapper implements Comparable<CityDistanceWrapper> {
     private City city;
     private int totalDistance;
-    private CityWrapper predecessor;
+    private CityDistanceWrapper predecessor;
 
-    CityWrapper(City city, int totalDistance, CityWrapper predecessor) {
+    public CityDistanceWrapper(City city, int totalDistance, CityDistanceWrapper predecessor) {
         this.city = city;
         this.totalDistance = totalDistance;
         this.predecessor = predecessor;
@@ -21,11 +23,11 @@ public class CityWrapper implements Comparable<CityWrapper> {
         this.totalDistance = totalDistance;
     }
 
-    public CityWrapper getPredecessor() {
+    public CityDistanceWrapper getPredecessor() {
         return predecessor;
     }
 
-    public void setPredecessor(CityWrapper predecessor) {
+    public void setPredecessor(CityDistanceWrapper predecessor) {
         this.predecessor = predecessor;
     }
 
@@ -34,7 +36,7 @@ public class CityWrapper implements Comparable<CityWrapper> {
     }
 
     @Override
-    public int compareTo(CityWrapper o) {
+    public int compareTo(CityDistanceWrapper o) {
         return Integer.compare(this.totalDistance, o.totalDistance);
     }
 

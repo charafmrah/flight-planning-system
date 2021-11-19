@@ -1,8 +1,10 @@
 // Linked List class is used to store adjacency list in the graph
 
-package com.example.aviationsystem;
+package com.example.aviationsystem.datastructures;
 
 
+
+import com.example.aviationsystem.City;
 
 import java.util.HashSet;
 import java.util.Set;

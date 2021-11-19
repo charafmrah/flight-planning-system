@@ -1,6 +1,8 @@
 // Node class is used in LinkedList class
 
-package com.example.aviationsystem;
+package com.example.aviationsystem.datastructures;
+
+import com.example.aviationsystem.City;
 
 public class Node {
     private Edge edge;
