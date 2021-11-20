@@ -8,7 +8,4 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin">
 
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
