@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aviation System</string>
+    <string name="app_name">Flight Planning System</string>
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="calculate">Calculate</string>

@@ -6,5 +6,5 @@
     <fragment
         android:id="@+id/homepageFragment"
         android:name="com.example.aviationsystem.fragments.HomepageFragment"
-        android:label="HomepageFragment" />
+        android:label="@string/app_name" />
 </navigation>
