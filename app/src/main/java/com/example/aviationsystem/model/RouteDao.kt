@@ -1,7 +1,6 @@
 package com.example.aviationsystem.model
 
 import androidx.room.*
-import com.example.aviationsystem.City
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -22,5 +21,5 @@ interface RouteDao {
     fun getRoutes(): Flow<List<Route>>
 
     @Query("SELECT source FROM route ORDER BY source ASC")
-    fun getSources(): Flow<List<City>>
+    fun getSources(): Flow<List<String>>
 }
