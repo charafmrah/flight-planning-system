@@ -13,4 +13,8 @@ data class Route (
         val sourceCity: City,
         @ColumnInfo(name = "destination")
         val destinationCity: City,
+        @ColumnInfo(name = "distance")
+        val routeDistance: Int,
+        @ColumnInfo(name = "cost")
+        val routeCost: Int
         )
