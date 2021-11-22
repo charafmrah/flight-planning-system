@@ -3,7 +3,7 @@
 
 The flight Planning System is an Android app that helps users find the shortest and cheapest paths from the source to the destination. We naturally went with graphs to represent the different cities. We used a weighted & directed graph to help connect the cities while storing distance & cost on the edge which will be used by Dijkstra’s algorithm to find the shortest and cheapest path. To implement the graph, we used the adjacency list approach using a linked list which we built, and a HashMap from Java’s library. The adjacency list linked lists store the nodes, which store the edges. Lastly, a custom class CityWrapper is used to encapsulate the cities for Dijkstra’s algorithm to calculate the total distance for each city while traversing it. Dijkstra’s algorithm is used using a MinHeap from Java’s library called PriorityQueue.
 
-## Model:
+## The database ER diagram:
 ![image](https://user-images.githubusercontent.com/20629020/142840328-7b9c8977-6768-4a59-bb93-c2c3ca65c85d.png)
 
 ## Screenshot
