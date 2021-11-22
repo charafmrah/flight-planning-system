@@ -14,7 +14,7 @@ interface RouteDao {
     @Delete
     suspend fun delete(route: Route)
 
-    @Query("SELECT * FROM route WHERE id = :id")
+    @Query("SELECT * FROM route WHERE routeId = :id")
     fun getRoute(id: Int): Flow<Route>
 
     @Query("SELECT * FROM route ORDER BY source ASC")
