@@ -17,9 +17,7 @@ interface RouteDao {
     @Query("SELECT * FROM route WHERE routeId = :id")
     fun getRoute(id: Int): Flow<Route>
 
-    @Query("SELECT * FROM route ORDER BY source ASC")
+    @Query("SELECT * FROM route ")
     fun getRoutes(): Flow<List<Route>>
 
-    @Query("SELECT source FROM route ORDER BY source ASC")
-    fun getSources(): Flow<List<String>>
 }
