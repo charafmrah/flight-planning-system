@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Cities (
+data class Airports (
     @PrimaryKey(autoGenerate = true)
-    val cityId: Int,
+    val airportId: Int,
     @ColumnInfo(name = "city")
-    val city: String
+    val airport: String
         )
