@@ -1,4 +1,4 @@
-package com.example.aviationsystem.model
+package com.example.aviationsystem.model.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

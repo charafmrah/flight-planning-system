@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.aviationsystem.model.dao.RouteDao
+import com.example.aviationsystem.model.entities.Route
 
 @Database(entities = [Route::class], version = 1, exportSchema = false)
 abstract class RouteRoomDatabase : RoomDatabase() {

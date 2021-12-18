@@ -1,6 +1,7 @@
-package com.example.aviationsystem.model
+package com.example.aviationsystem.model.dao
 
 import androidx.room.*
+import com.example.aviationsystem.model.entities.Route
 import kotlinx.coroutines.flow.Flow
 
 @Dao
