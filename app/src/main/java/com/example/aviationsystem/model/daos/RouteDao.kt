@@ -1,4 +1,4 @@
-package com.example.aviationsystem.model.dao
+package com.example.aviationsystem.model.daos
 
 import androidx.room.*
 import com.example.aviationsystem.model.entities.Route
