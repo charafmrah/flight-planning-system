@@ -1,4 +1,4 @@
-package com.example.aviationsystem.model
+package com.example.aviationsystem.model.databases
 
 import android.content.Context
 import androidx.room.Database
