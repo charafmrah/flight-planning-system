@@ -12,5 +12,8 @@ data class Route (
 //        @ColumnInfo(name = "distance")
 //        val routeDistance: Int,
         @ColumnInfo(name = "cost")
-        val routeCost: Int
+        val routeCost: Int,
+
+        @ColumnInfo(name = "distance_id")
+        val distanceId: Int
         )
