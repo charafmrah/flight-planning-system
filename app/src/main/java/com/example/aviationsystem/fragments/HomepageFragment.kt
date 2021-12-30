@@ -7,6 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.aviationsystem.databinding.FragmentHomepageBinding
+import com.example.aviationsystem.City
+import com.example.aviationsystem.datastructures.Edge
+import com.example.aviationsystem.datastructures.Graph
+
 
 class HomepageFragment : Fragment() {
 
@@ -25,6 +29,7 @@ class HomepageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 
 }
