@@ -5,9 +5,22 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.aviationsystem.model.daos.RouteDao
+import com.example.aviationsystem.model.entities.Airport
+import com.example.aviationsystem.model.entities.Distance
 import com.example.aviationsystem.model.entities.Route
+import com.example.aviationsystem.model.relations.Destination
+import com.example.aviationsystem.model.relations.Source
 
-@Database(entities = [Route::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        Route::class,
+        Airport::class,
+        Distance::class,
+        Source::class,
+        Destination::class
+    ],
+    version = 1, exportSchema = false
+)
 abstract class RouteRoomDatabase : RoomDatabase() {
 
     abstract fun routeDao(): RouteDao

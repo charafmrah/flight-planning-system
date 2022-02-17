@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Distances (
+data class Distance (
     @PrimaryKey(autoGenerate = true)
     val distanceId: Int,
     @ColumnInfo(name = "distance")
