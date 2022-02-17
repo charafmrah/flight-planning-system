@@ -2,22 +2,22 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homepageFragment">
+    app:startDestination="@id/homepage">
     <fragment
-        android:id="@+id/homepageFragment"
+        android:id="@+id/homepage"
         android:name="com.example.aviationsystem.fragments.HomepageFragment"
         android:label="@string/app_name"
         >
         <action
             android:id="@+id/action_homepageFragment_to_addpageFragment"
-            app:destination="@id/addpageFragment" />
+            app:destination="@id/addpage" />
     </fragment>
     <fragment
-        android:id="@+id/addpageFragment"
+        android:id="@+id/addpage"
         android:name="com.example.aviationsystem.fragments.AddpageFragment"
         android:label="@string/add_route" >
         <action
             android:id="@+id/action_addpageFragment_to_homepageFragment"
-            app:destination="@id/homepageFragment" />
+            app:destination="@id/homepage" />
     </fragment>
 </navigation>
