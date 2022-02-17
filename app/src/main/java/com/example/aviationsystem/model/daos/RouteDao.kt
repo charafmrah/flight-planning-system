@@ -6,7 +6,7 @@ import com.example.aviationsystem.model.entities.Route
 import com.example.aviationsystem.model.relations.DistancesWithRoute
 
 @Dao
-interface DistancesDao {
+interface RouteDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDistance(distance: Distances)
