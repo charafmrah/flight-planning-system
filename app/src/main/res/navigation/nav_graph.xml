@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_homepageFragment_to_addpageFragment"
             app:destination="@id/addpage" />
+        <action
+            android:id="@+id/action_homepage_to_listFragment"
+            app:destination="@id/listpage" />
     </fragment>
     <fragment
         android:id="@+id/addpage"
@@ -18,6 +21,20 @@
         android:label="@string/add_route" >
         <action
             android:id="@+id/action_addpageFragment_to_homepageFragment"
+            app:destination="@id/homepage" />
+        <action
+            android:id="@+id/action_addpage_to_listFragment"
+            app:destination="@id/listpage" />
+    </fragment>
+    <fragment
+        android:id="@+id/listpage"
+        android:name="com.example.aviationsystem.fragments.ListFragment"
+        android:label="ListFragment" >
+        <action
+            android:id="@+id/action_listFragment_to_addpage"
+            app:destination="@id/addpage" />
+        <action
+            android:id="@+id/action_listFragment_to_homepage"
             app:destination="@id/homepage" />
     </fragment>
 </navigation>

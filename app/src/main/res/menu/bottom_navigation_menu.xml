@@ -4,10 +4,15 @@
         android:id="@+id/homepage"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home"
-        android:title="Homepage"/>
+        android:title="Calculate"/>
     <item
         android:id="@+id/addpage"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_add"
+        android:title="@string/add_route"/>
+    <item
+        android:id="@+id/listpage"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_view_list"
         android:title="@string/add_route"/>
 </menu>
