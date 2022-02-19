@@ -104,7 +104,7 @@ class RouteViewModel(private val routeDao: RouteDao) : ViewModel() {
 }
 
 // Factory class to instantiate the [ViewModel] isntance.
-class CalculatorViewModelFactory(private val routeDao: RouteDao) : ViewModelProvider.Factory {
+class RouteViewModelFactory(private val routeDao: RouteDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(RouteViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
