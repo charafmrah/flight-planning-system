@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/listpage"
         android:name="com.example.aviationsystem.fragments.ListFragment"
-        android:label="ListFragment" >
+        android:label="List Page" >
         <action
             android:id="@+id/action_listFragment_to_addpage"
             app:destination="@id/addpage" />

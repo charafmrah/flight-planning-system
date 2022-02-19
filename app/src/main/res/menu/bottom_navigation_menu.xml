@@ -14,5 +14,5 @@
         android:id="@+id/listpage"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_view_list"
-        android:title="@string/add_route"/>
+        android:title="All Routes"/>
 </menu>
