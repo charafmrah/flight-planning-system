@@ -9,11 +9,16 @@ import androidx.room.PrimaryKey
 data class Route (
         @PrimaryKey(autoGenerate = true)
         val routeId: Int = 0,
-//        @ColumnInfo(name = "distance")
-//        val routeDistance: Int,
+
+        @ColumnInfo(name = "source_airport")
+        val sourceAirport: String,
+
+        @ColumnInfo(name = "destination_airport")
+        val destinationAirport: String,
+
         @ColumnInfo(name = "cost")
         val routeCost: Int,
 
-        @ColumnInfo(name = "distance_id")
-        val distanceId: Int
+        @ColumnInfo(name = "distance")
+        val routeDistance: Int
         )
