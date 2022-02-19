@@ -11,19 +11,16 @@ interface RouteDao {
     suspend fun insertRoute(route: Route)
 
     @Update
-    suspend fun update(route: Route)
+    suspend fun updateRoute(route: Route)
 
     @Delete
-    suspend fun delete(route: Route)
-
+    suspend fun deleteRoute(route: Route)
 
     @Transaction
     @Query("SELECT * FROM route WHERE routeId = :routeId")
-    suspend fun getRoute(routeId: Int): Flow<Route>
+    fun getRoute(routeId: Int): Flow<Route>
 
     @Transaction
     @Query("SELECT * FROM route ORDER BY source_airport DESC")
-    suspend fun getRoutes(): Flow<List<Route>>
-
-
+    fun getRoutes(): Flow<List<Route>>
 }
