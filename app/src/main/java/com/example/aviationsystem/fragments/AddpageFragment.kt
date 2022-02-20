@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.aviationsystem.databinding.FragmentHomepageBinding
 import com.example.aviationsystem.City
 import com.example.aviationsystem.RouteApplication
