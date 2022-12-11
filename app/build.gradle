@@ -4,13 +4,13 @@ plugins {
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
     buildToolsVersion "31.0.0"
 
     defaultConfig {
         applicationId "com.example.aviationsystem"
-        minSdkVersion 28
-        targetSdkVersion 31
+        minSdkVersion 25
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -31,6 +31,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.example.aviationsystem'
 
 }
 
