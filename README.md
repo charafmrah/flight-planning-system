@@ -1,11 +1,3 @@
-<!-- PROJECT SHIELDS -->
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
 <h3 align="center">Flight Planning System</h3>
@@ -16,8 +8,6 @@
     <a href="https://github.com/charafmrah/Flight-Planning-System"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/charafmrah/Flight-Planning-System">View Demo</a>
-    ·
     <a href="https://github.com/charafmrah/Flight-Planning-System/issues">Report Bug</a>
     ·
     <a href="https://github.com/charafmrah/Flight-Planning-System/issues">Request Feature</a>
@@ -106,18 +96,6 @@ Project Link: [https://github.com/charafmrah/Flight-Planning-System](https://git
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/charafmrah/Flight-Planning-System.svg?style=for-the-badge
-[contributors-url]: https://github.com/charafmrah/Flight-Planning-System/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/charafmrah/Flight-Planning-System.svg?style=for-the-badge
-[forks-url]: https://github.com/charafmrah/Flight-Planning-System/network/members
-[stars-shield]: https://img.shields.io/github/stars/charafmrah/Flight-Planning-System.svg?style=for-the-badge
-[stars-url]: https://github.com/charafmrah/Flight-Planning-System/stargazers
-[issues-shield]: https://img.shields.io/github/issues/charafmrah/Flight-Planning-System.svg?style=for-the-badge
-[issues-url]: https://github.com/charafmrah/Flight-Planning-System/issues
-[license-shield]: https://img.shields.io/github/license/charafmrah/Flight-Planning-System.svg?style=for-the-badge
-[license-url]: https://github.com/charafmrah/Flight-Planning-System/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/incharafmrah/
 [product-screenshot-1]: Screenshot_1.png
 [product-screenshot-2]: Screenshot_2.png
 [java]: https://img.shields.io/badge/-Java-black.svg?style=for-the-badge&logo=java&colorB=555
