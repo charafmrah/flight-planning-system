@@ -37,8 +37,10 @@ The flight Planning System is an Android app that helps users find the shortest 
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
-* [![Java][Next.js]][Next-url]
+* [![Java][java]][java-url]
+* [![Kotlin][kotlin]][kotlin-url]
+* [![Android][android]][android-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -98,7 +100,7 @@ Project Link: [https://github.com/charafmrah/Flight-Planning-System](https://git
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [product-screenshot-1]: Screenshot_1.png
 [product-screenshot-2]: Screenshot_2.png
-[java]: https://img.shields.io/badge/-Java-black.svg?style=for-the-badge&logo=java&colorB=555
+[java]: https://img.shields.io/badge/-Java-black.svg?style=for-the-badge&logo=Java&colorB=555
 [java-url]: https://www.java.com/
 [kotlin]: https://img.shields.io/badge/-Kotlin-black.svg?style=for-the-badge&logo=kotlin&colorB=555
 [kotlin-url]: https://kotlinlang.org/
