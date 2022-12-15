@@ -5,12 +5,12 @@
   <p align="center">
     Flight planning system android application.
     <br />
-    <a href="https://github.com/charafmrah/Flight-Planning-System"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/charafmrah/flight-planning-system"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/charafmrah/Flight-Planning-System/issues">Report Bug</a>
+    <a href="https://github.com/charafmrah/flight-planning-system/issues">Report Bug</a>
     ·
-    <a href="https://github.com/charafmrah/Flight-Planning-System/issues">Request Feature</a>
+    <a href="https://github.com/charafmrah/flight-planning-system/issues">Request Feature</a>
   </p>
 </div>
 
@@ -76,7 +76,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Charaf Mrah - [@charafmrah](https://twitter.com/charafmrah) - charaf4charaf@gmail.com 
 
-Project Link: [https://github.com/charafmrah/Flight-Planning-System](https://github.com/charafmrah/Flight-Planning-System)
+Project Link: [https://github.com/charafmrah/flight-planning-system](https://github.com/charafmrah/flight-planning-system)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
