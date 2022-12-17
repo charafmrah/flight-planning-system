@@ -21,7 +21,7 @@
 
 ![Flight planning system Screen Shot][product-screenshot-1]   ![Flight planning system Screen Shot][product-screenshot-2]
 
-The flight Planning System is an Android app that helps users find the shortest and cheapest paths in a graph. We naturally went with graphs to represent the different airports. We used a weighted & directed graph to help connect the airports while storing distance & cost on the edge which will be used by Dijkstra’s algorithm to find the shortest and cheapest path. To implement the graph, we used the adjacency list approach using a linked list which we built, and a HashMap from Java’s library. The adjacency list linked lists store the nodes, which store the edges. Lastly, a custom class AirportWrapper is used to encapsulate the aiports for Dijkstra’s algorithm to calculate the total distance for each aiport while traversing it. Dijkstra’s algorithm is used using a MinHeap from Java’s library called PriorityQueue.
+Welcome to the Flight Planning System, an Android app that helps users find the most efficient route through a network of airports. We used a weighted and directed graph to represent the connections between airports, with distance and cost information stored on the edges. To implement the graph, we employed an adjacency list approach using a custom linked list and Java's HashMap. The AirportWrapper class is used to encapsulate the airports for Dijkstra's algorithm, which we implemented using Java's PriorityQueue (MinHeap). With this app, users can easily find the shortest and cheapest path between airports.
 
 ## The Database ER Diagram:
 ![ER Diagram](https://user-images.githubusercontent.com/20629020/147767137-4bef7af5-e1e7-4043-8ef0-3c65b28094ac.png)
